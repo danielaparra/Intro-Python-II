@@ -56,5 +56,23 @@ while True:
     print(player.roomCurrentlyIn.name)
     print(player.roomCurrentlyIn.description)
     print(player.roomCurrentlyIn.itemsInventory)
-    userInput = input(">> Enter a cardinal direction (n, s, w, e)")
-        if userInput:
+    print("Things you can do: enter a cardinal direction (n, s, w, e), quit (q) or action (drop item)")
+    userInput = input(">> What would you like to do? ")
+    
+    inputWords = userInput.split(' ')
+
+    if len(inputWords) == 1:
+        if userInput == "n":
+            pass
+        elif userInput == "s":
+            pass
+        elif userInput == "w":
+            pass
+        elif userInput == "e":
+            pass
+        elif userInput == "q":
+            pass
+    elif len(inputWords) == 2:
+        pass
+    else:
+        print("Not a valid input. Try again.")

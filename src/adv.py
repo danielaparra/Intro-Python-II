@@ -55,4 +55,6 @@ player = Player(room['outside'])
 while True:
     print(player.roomCurrentlyIn.name)
     print(player.roomCurrentlyIn.description)
-    #input(">> Enter a cardinal direction (n, s, w, e)")
+    print(player.roomCurrentlyIn.itemsInventory)
+    userInput = input(">> Enter a cardinal direction (n, s, w, e)")
+        if userInput:

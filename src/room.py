@@ -9,3 +9,6 @@ class Room:
     
     def add(self, item):
         self.items.append(item)
+
+    def itemsInventory(self):
+        return f"Items in room: {' ,'.join(self.items)}"

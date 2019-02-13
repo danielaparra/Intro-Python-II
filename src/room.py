@@ -12,3 +12,6 @@ class Room:
 
     def itemsInventory(self):
         return f"Items in room: {' ,'.join(self.items)}"
+
+    def remove(self, item):
+        self.items.remove(item)

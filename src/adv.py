@@ -56,7 +56,7 @@ while True:
     print(player.roomCurrentlyIn.name)
     print(player.roomCurrentlyIn.description)
     print(player.roomCurrentlyIn.itemsInventory)
-    print("Things you can do: enter a cardinal direction (n, s, w, e), quit (q) or action (drop item)")
+    print("Things you can do: enter a cardinal direction (n, s, w, e), quit (q) or action (get/take item)")
     userInput = input(">> What would you like to do? ")
     
     inputWords = userInput.split(' ')
@@ -73,6 +73,13 @@ while True:
         elif userInput == "q":
             pass
     elif len(inputWords) == 2:
-        pass
+        if inputWords[0] == "get" or inputWords[0] == "take":
+            for item in player.roomCurrentlyIn.items:
+                if item.name == inputWords[1]:
+                    player.roomCurrentlyIn.remove(item)
+                    player.get(item)
+                else: 
+                    print(f"No item by the name of {inputWords[1]} exists.")
+                    
     else:
         print("Not a valid input. Try again.")

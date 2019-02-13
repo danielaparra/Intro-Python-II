@@ -78,6 +78,7 @@ while True:
                 if item.name == inputWords[1]:
                     player.roomCurrentlyIn.remove(item)
                     player.get(item)
+                    item.on_take()
                 else: 
                     print(f"No item by the name of {inputWords[1]} exists.")
                     

@@ -1,11 +1,12 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons."),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -22,7 +23,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -33,6 +33,26 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+# Declare all items
+
+item = {
+    'rock': Item("rock", "A large stone might be great as a weapon or weight"),
+
+    'lantern': Item("lantern", "A dim lantern looks like won't last for very long without more fuel"),
+
+    'key': Item("key", "A key... Wonder what it opens?"),
+
+    'coin': Item("coin", "A gold coin. Looks like whoever took the treasure missed something on the way out."),
+}
+
+# Add items to rooms
+
+room['outside'].add(item['rock'])
+room['narrow'].add(item['lantern'])
+room['foyer'].add(item['key'])
+room['treasure'].add(item['coin'])
+
 
 #
 # Main
@@ -53,6 +73,46 @@ player = Player(room['outside'])
 # If the user enters "q", quit the game.
 
 while True:
+    print("\n")
     print(player.roomCurrentlyIn.name)
+    print("----------------------------")
     print(player.roomCurrentlyIn.description)
-    #input(">> Enter a cardinal direction (n, s, w, e)")
+    print(player.roomCurrentlyIn.itemsInventory())
+    print(player.inventory())
+    print("Things you can do: move (n, s, w, e), quit (q) or action (take/drop item)\n")
+    userInput = input(">> What would you like to do? ")
+    
+    inputWords = userInput.split(' ')
+
+    if len(inputWords) == 1:
+        if userInput == "n" or userInput == "north":
+            player.move_n()
+        elif userInput == "s" or userInput == "south":
+            player.move_s()
+        elif userInput == "w" or userInput == "west":
+            player.move_w()
+        elif userInput == "e" or userInput == "east":
+            player.move_e()
+        elif userInput == "q" or userInput == "quit":
+            quit()
+        elif userInput == "i" or userInput == "inventory":
+            print(player.inventory())
+        else:
+            print("\nLooks like that's not a direction.")
+    elif len(inputWords) == 2:
+        if inputWords[0] == "get" or inputWords[0] == "take":
+            for item in player.roomCurrentlyIn.items:
+                if item.name == inputWords[1]:
+                    player.roomCurrentlyIn.remove(item)
+                    player.get(item)
+                    item.on_take()
+                else: 
+                    print("\nNo item by that name exists.")
+        elif inputWords[0] == "drop":
+            for item in player.items:
+                if item.name == inputWords[1]:
+                    player.drop(item)
+                    item.on_drop()
+                    player.roomCurrentlyIn.add(item)           
+    else:
+        print("\nNot a valid input. Try again.")

@@ -87,14 +87,16 @@ while True:
     if len(inputWords) == 1:
         if userInput == "n" or userInput == "north":
             player.move_n()
-        elif userInput == 's':
+        elif userInput == "s" or userInput == "south":
             player.move_s()
-        elif userInput == "w":
+        elif userInput == "w" or userInput == "west":
             player.move_w()
-        elif userInput == "e":
+        elif userInput == "e" or userInput == "east":
             player.move_e()
-        elif userInput == "q":
+        elif userInput == "q" or userInput == "quit":
             quit()
+        elif userInput == "i" or userInput == "inventory":
+            print(player.inventory())
         else:
             print("Looks like that's not a direction.\n")
     elif len(inputWords) == 2:
@@ -111,6 +113,6 @@ while True:
                 if item.name == inputWords[1]:
                     player.drop(item)
                     item.on_drop()
-                    player.roomCurrentlyIn.items.add(item)           
+                    player.roomCurrentlyIn.add(item)           
     else:
         print("Not a valid input. Try again.")

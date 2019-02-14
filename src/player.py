@@ -9,29 +9,29 @@ class Player:
         self.items = []
 
     def move_n(self):
-        newRoom = self.roomCurrentlyIn.n_to
-        if newRoom != None:
+        if hasattr(self.roomCurrentlyIn, 'n_to'):
+            newRoom = self.roomCurrentlyIn.n_to
             self.roomCurrentlyIn = newRoom
         else:
             print("Can't go in that direction!")
     
     def move_s(self):
-        newRoom = self.roomCurrentlyIn.s_to
-        if newRoom != None:
+        if hasattr(self.roomCurrentlyIn, 's_to'):
+            newRoom = self.roomCurrentlyIn.s_to
             self.roomCurrentlyIn = newRoom
         else:
             print("Can't go in that direction!")
 
     def move_w(self):
-        newRoom = self.roomCurrentlyIn.w_to
-        if newRoom != None:
+        if hasattr(self.roomCurrentlyIn, 'w_to'):
+            newRoom = self.roomCurrentlyIn.w_to
             self.roomCurrentlyIn = newRoom
         else:
             print("Can't go in that direction!")
     
     def move_e(self):
-        newRoom = self.roomCurrentlyIn.e_to
-        if newRoom != None:
+        if hasattr(self.roomCurrentlyIn, 'e_to'):
+            newRoom = self.roomCurrentlyIn.e_to
             self.roomCurrentlyIn = newRoom
         else:
             print("Can't go in that direction!")

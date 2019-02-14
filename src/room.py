@@ -12,9 +12,9 @@ class Room:
 
     def itemsInventory(self):
         if len(self.items) == 0:
-            return "No items in this room."
+            return "No items in this room.\n"
         else:
-            return f"Items in room: {', '.join(self.items)}"
+            return f"Items in room: {', '.join(self.items)}\n"
 
     def remove(self, item):
         self.items.remove(item)

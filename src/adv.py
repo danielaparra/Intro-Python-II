@@ -54,17 +54,18 @@ player = Player(room['outside'])
 # If the user enters "q", quit the game.
 
 while True:
+    print("\n")
     print(player.roomCurrentlyIn.name)
     print("----------------------------")
     print(player.roomCurrentlyIn.description)
     print(player.roomCurrentlyIn.itemsInventory())
-    print("Things you can do: move (n, s, w, e), quit (q) or action (take/drop item)")
+    print("Things you can do: move (n, s, w, e), quit (q) or action (take/drop item)\n")
     userInput = input(">> What would you like to do? ")
     
     inputWords = userInput.split(' ')
 
     if len(inputWords) == 1:
-        if userInput == "n":
+        if userInput == "n" or userInput == "north":
             player.move_n()
         elif userInput == 's':
             player.move_s()
@@ -75,7 +76,7 @@ while True:
         elif userInput == "q":
             quit()
         else:
-            "Looks like that's not a direction."
+            print("Looks like that's not a direction.\n")
     elif len(inputWords) == 2:
         if inputWords[0] == "get" or inputWords[0] == "take":
             for item in player.roomCurrentlyIn.items:

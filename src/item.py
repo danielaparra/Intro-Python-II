@@ -4,7 +4,7 @@ class Item:
         self.description = name
     
     def on_take(self):
-        print("{self.name} has been taken.")
+        print(f"{self.name} has been taken.")
 
     def on_drop(self):
-        print("{self.name} has been dropped.")
+        print(f"{self.name} has been dropped.")

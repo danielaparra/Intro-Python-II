@@ -98,7 +98,7 @@ while True:
         elif userInput == "i" or userInput == "inventory":
             print(player.inventory())
         else:
-            print("Looks like that's not a direction.\n")
+            print("\nLooks like that's not a direction.")
     elif len(inputWords) == 2:
         if inputWords[0] == "get" or inputWords[0] == "take":
             for item in player.roomCurrentlyIn.items:
@@ -107,7 +107,7 @@ while True:
                     player.get(item)
                     item.on_take()
                 else: 
-                    print("No item by that name exists.")
+                    print("\nNo item by that name exists.")
         elif inputWords[0] == "drop":
             for item in player.items:
                 if item.name == inputWords[1]:
@@ -115,4 +115,4 @@ while True:
                     item.on_drop()
                     player.roomCurrentlyIn.add(item)           
     else:
-        print("Not a valid input. Try again.")
+        print("\nNot a valid input. Try again.")

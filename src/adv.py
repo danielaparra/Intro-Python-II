@@ -23,7 +23,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -34,6 +33,18 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+# Add items to rooms
+
+room = {
+    'rock': Item("rock", "A large stone might be great as a weapon or weight"),
+
+    'lantern': Item("lantern", "A dim lantern looks like won't last for very long without more fuel"),
+
+    'key': Item("key", "A key... Wonder what it opens?"),
+
+    'coin': Item("coin", "A gold coin. Looks like whoever took the treasure missed something on the way out."),
+}
 
 #
 # Main

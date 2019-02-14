@@ -6,7 +6,7 @@ from item import Item
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons."),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -55,24 +55,27 @@ player = Player(room['outside'])
 
 while True:
     print(player.roomCurrentlyIn.name)
+    print("----------------------------")
     print(player.roomCurrentlyIn.description)
-    print(player.roomCurrentlyIn.itemsInventory)
-    print("Things you can do: enter a cardinal direction (n, s, w, e), quit (q) or action (get/take item)")
+    print(player.roomCurrentlyIn.itemsInventory())
+    print("Things you can do: move (n, s, w, e), quit (q) or action (take/drop item)")
     userInput = input(">> What would you like to do? ")
     
     inputWords = userInput.split(' ')
 
     if len(inputWords) == 1:
         if userInput == "n":
-            player.move_n
-        elif userInput == "s":
-            player.move_s
+            player.move_n()
+        elif userInput == 's':
+            player.move_s()
         elif userInput == "w":
-            player.move_w
+            player.move_w()
         elif userInput == "e":
-            player.move_e
+            player.move_e()
         elif userInput == "q":
             quit()
+        else:
+            "Looks like that's not a direction."
     elif len(inputWords) == 2:
         if inputWords[0] == "get" or inputWords[0] == "take":
             for item in player.roomCurrentlyIn.items:
@@ -81,8 +84,8 @@ while True:
                     player.get(item)
                     item.on_take()
                 else: 
-                    print(f"No item by the name of {inputWords[1]} exists.")
-        if inputWords[0] == "drop":
+                    print("No item by that name exists.")
+        elif inputWords[0] == "drop":
             for item in player.items:
                 if item.name == inputWords[1]:
                     player.drop(item)

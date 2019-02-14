@@ -78,7 +78,7 @@ while True:
     print("----------------------------")
     print(player.roomCurrentlyIn.description)
     print(player.roomCurrentlyIn.itemsInventory())
-    print(player.inventory)
+    print(player.inventory())
     print("Things you can do: move (n, s, w, e), quit (q) or action (take/drop item)\n")
     userInput = input(">> What would you like to do? ")
     

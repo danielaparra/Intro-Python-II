@@ -13,28 +13,28 @@ class Player:
             newRoom = self.roomCurrentlyIn.n_to
             self.roomCurrentlyIn = newRoom
         else:
-            print("Can't go in that direction!\n")
+            print("Can't go in that direction!")
     
     def move_s(self):
         if hasattr(self.roomCurrentlyIn, 's_to'):
             newRoom = self.roomCurrentlyIn.s_to
             self.roomCurrentlyIn = newRoom
         else:
-            print("Can't go in that direction!\n")
+            print("Can't go in that direction!")
 
     def move_w(self):
         if hasattr(self.roomCurrentlyIn, 'w_to'):
             newRoom = self.roomCurrentlyIn.w_to
             self.roomCurrentlyIn = newRoom
         else:
-            print("Can't go in that direction!\n")
+            print("Can't go in that direction!")
     
     def move_e(self):
         if hasattr(self.roomCurrentlyIn, 'e_to'):
             newRoom = self.roomCurrentlyIn.e_to
             self.roomCurrentlyIn = newRoom
         else:
-            print("Can't go in that direction!\n")
+            print("Can't go in that direction!")
 
     def get(self, item):
         self.items.append(item)
@@ -43,13 +43,15 @@ class Player:
         self.items.remove(item)
 
     def inventory(self):
-        if self.items == 0:
+        if len(self.items) == 0:
             return "No items in inventory."
         else: 
-            return f"Items in inventory: {','.join(self.items)}"
+            names = [item.name for item in self.items]
+            return f"Items in your inventory: {', '.join(names)}"
 
     def i(self):
-        if self.items == 0:
+        if len(self.items) == 0:
             return "No items in inventory."
         else: 
-            return f"Items in inventory: {','.join(self.items)}"
+            names = [item.name for item in self.items]
+            return f"Items in your inventory: {', '.join(names)}"

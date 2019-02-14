@@ -48,10 +48,3 @@ class Player:
         else: 
             names = [item.name for item in self.items]
             return f"Items in your inventory: {', '.join(names)}"
-
-    def i(self):
-        if len(self.items) == 0:
-            return "No items in inventory."
-        else: 
-            names = [item.name for item in self.items]
-            return f"Items in your inventory: {', '.join(names)}"

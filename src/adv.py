@@ -73,6 +73,8 @@ player = Player(room['outside'])
 # If the user enters "q", quit the game.
 
 while True:
+
+    # Presents info about current location, room inventory, player inventory and what can be done next.
     print("\n")
     print(player.roomCurrentlyIn.name)
     print("----------------------------")

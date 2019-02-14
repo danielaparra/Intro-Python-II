@@ -34,9 +34,9 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-# Add items to rooms
+# Declare all items
 
-room = {
+item = {
     'rock': Item("rock", "A large stone might be great as a weapon or weight"),
 
     'lantern': Item("lantern", "A dim lantern looks like won't last for very long without more fuel"),
@@ -45,6 +45,14 @@ room = {
 
     'coin': Item("coin", "A gold coin. Looks like whoever took the treasure missed something on the way out."),
 }
+
+# Add items to rooms
+
+room['outside'].add(item['rock'])
+room['narrow'].add(item['lantern'])
+room['foyer'].add(item['key'])
+room['treasure'].add(item['coin'])
+
 
 #
 # Main
@@ -70,6 +78,7 @@ while True:
     print("----------------------------")
     print(player.roomCurrentlyIn.description)
     print(player.roomCurrentlyIn.itemsInventory())
+    print(player.inventory)
     print("Things you can do: move (n, s, w, e), quit (q) or action (take/drop item)\n")
     userInput = input(">> What would you like to do? ")
     

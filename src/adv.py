@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -63,15 +64,15 @@ while True:
 
     if len(inputWords) == 1:
         if userInput == "n":
-            pass
+            player.move_n
         elif userInput == "s":
-            pass
+            player.move_s
         elif userInput == "w":
-            pass
+            player.move_w
         elif userInput == "e":
-            pass
+            player.move_e
         elif userInput == "q":
-            pass
+            quit()
     elif len(inputWords) == 2:
         if inputWords[0] == "get" or inputWords[0] == "take":
             for item in player.roomCurrentlyIn.items:
@@ -81,6 +82,11 @@ while True:
                     item.on_take()
                 else: 
                     print(f"No item by the name of {inputWords[1]} exists.")
-                    
+        if inputWords[0] == "drop":
+            for item in player.items:
+                if item.name == inputWords[1]:
+                    player.drop(item)
+                    item.on_drop()
+                    player.roomCurrentlyIn.items.add(item)           
     else:
         print("Not a valid input. Try again.")

@@ -73,6 +73,8 @@ player = Player(room['outside'])
 # If the user enters "q", quit the game.
 
 while True:
+
+    # Presents info about current location, room inventory, player inventory and what can be done next.
     print("\n")
     print(player.roomCurrentlyIn.name)
     print("----------------------------")
@@ -85,17 +87,17 @@ while True:
     inputWords = userInput.split(' ')
 
     if len(inputWords) == 1:
-        if userInput == "n" or userInput == "north":
+        if userInput in ['n', 'north']:
             player.move_n()
-        elif userInput == "s" or userInput == "south":
+        elif userInput in ['s', 'south']:
             player.move_s()
-        elif userInput == "w" or userInput == "west":
+        elif userInput in ['w', 'west']:
             player.move_w()
-        elif userInput == "e" or userInput == "east":
+        elif userInput in ['e', 'east']:
             player.move_e()
-        elif userInput == "q" or userInput == "quit":
+        elif userInput in ['q', 'quit']:
             quit()
-        elif userInput == "i" or userInput == "inventory":
+        elif userInput in ['i', 'inventory']:
             print(player.inventory())
         else:
             print("\nLooks like that's not a direction.")
